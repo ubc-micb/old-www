@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Search Autocomplete
+ * Enables autocomplete functionality on search fields.
+ *
+ * @authors
+ * Miroslav Talenberg (Dominique CLAUSE) <http://www.axiomcafe.fr/contact>
+ *
+ * Sponsored by:
+ * www.axiomcafe.fr
+ */
+
+include_once('search_autocomplete.admin.inc');
+include_once('search_autocomplete.view_autocomplete.inc');
+
+
+/**
+ * HOOK OF INIT:
+ * add autocomplete.js on everypage
+ */
+function search_autocomplete_init() {
+  global $base_url;
+  global $language;
+
+  // checkout if user have authorization to access the autocompleted form
+  if (user_access('use Search Autocomplete')) {
+    // init:
+    $settings = array();
+  
+    // checkout if the db exists (it should)
+    if (db_table_exists('search_autocomplete_forms')) {
+      // get every form to autocomplete
+      $result = db_query('SELECT * FROM {search_autocomplete_forms} WHERE enabled=1');
+      // build the setting array to transfert to JS
+      foreach ($result as $match) {
+        $form_id = 'form' . $match->fid;
+        $input_data  = explode("\n", $match->data_static);
+        $data_static = array();
+        for ($i=0; $i < count($input_data); $i++) {
+          $cut = strripos($input_data[$i], '=>');
+          $object = array();
+          if ($cut > 0) {
+            $object['label']  = trim(substr($input_data[$i], 0, $cut));
+            $object['value']  = trim(substr($input_data[$i], 0, $cut));
+            $object['link']   = trim(substr($input_data[$i], $cut+2, strlen($input_data[$i])));
+          } else {
+            $object['label']  = trim($input_data[$i]);
+            $object['value']  = trim($input_data[$i]);
+          }
+          $data_static[] = $object;
+        }
+        
+        $themeID      = preg_replace("/\\.[^.\\s]{3,4}$/", "", $match->theme);
+        $data_source  = $match->data_callback;
+        if ($match->data_source == 1 && !url_is_external($match->data_callback))
+          $data_source = $base_url . '/' . $match->data_callback;
+        
+        drupal_add_js(array('search_autocomplete' => array(
+          $form_id          => array(
+            'selector'      => $match->selector,
+            'minChars'      => $match->min_char,
+            'max_sug'       => $match->max_sug,
+            'type'          => $match->data_source,
+            'datas'         => $match->data_source > 1 ? $data_static : $data_source,
+            'fid'           => $match->fid,
+            'theme'         => str_replace(' ', '-', strtolower($themeID)),    // get the css filename with '-' instead of ' ', lower case and no '.css'
+            'auto_submit'   => $match->auto_submit,
+            'auto_redirect' => $match->auto_redirect
+          )
+        )), 'setting');
+        drupal_add_css(drupal_get_path('module', 'search_autocomplete') . '/css/' . $match->theme);         
+      }
+      // If there is some results: need to include the css and js....
+      if ($result) {
+        drupal_add_library('system', 'ui');
+        drupal_add_library('system', 'ui.widget');
+        drupal_add_library('system', 'ui.position');
+        drupal_add_library('system', 'ui.autocomplete');
+        drupal_add_js(drupal_get_path('module', 'search_autocomplete') . '/js/jquery.autocomplete.js');
+      }
+    }
+  }
+  
+  if (isset($_GET['sort_order'])) {
+    $_GET['sort_order'] = drupal_strtoupper($_GET['sort_order']);
+  }
+  
+} // search_autocomplete_init()
+
+
+/**
+ * HELP FUNCTION: replace placeholders in the input string
+ * @param $input  the string to be replaced
+ * @param $args   the array of placeholders and values
+ */
+function search_autocomplete_replaceArguments(&$input, &$args) {
+  $modified = FALSE;
+  foreach ($args as $key => $data) {
+    $input = preg_replace('#' . $key . '#', $data, $input);
+    $modified = TRUE;
+  }
+  return $modified;
+}

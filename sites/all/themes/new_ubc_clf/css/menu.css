@@ -1,0 +1,85 @@
+/******************************* 
+	menu.css
+ Stylesheet for the navigation menu
+ *******************************/
+
+#UbcNavWrapper {
+	background: url("../images/header/mainNav2LiBg.gif") repeat-x scroll center center transparent;
+    border-color: #656464 #E3E3E3 #E3E3E3;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 auto;
+    min-width: 978px;
+    width: 978px;
+    behavior: url(/sites/all/libraries/PIE/PIE.htc);
+}
+
+.UbcFrontNavWrapper {
+    border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    -o-border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+}
+
+.sf-menu {
+    width: 979px;
+	margin: 0 auto 0 auto;
+	height: 40px;
+	z-index: 1;
+}
+
+.sf-menu>li {
+	background: url("../images/header/mainNav2Bg.gif") no-repeat scroll right bottom transparent;
+    font-size: 12px;
+    font-weight: bold;
+    height: 27px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.sf-menu>li a {
+	color: #475057;
+	text-decoration: none;
+}
+
+.sf-menu>li>a {
+	padding: 14px 12px;
+}
+
+.sf-menu>li ul {
+    background: none repeat scroll 0 0 #002859;
+    border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    margin-top: 11px;
+    padding: 5px 13px 5px 5px;
+	behavior: url(/sites/all/libraries/PIE/PIE.htc);
+}
+
+.sf-menu>li ul li {
+	padding-right: 6px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.sf-menu>li ul li:hover {
+	background: none repeat scroll 0 0 #375c8a;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -o-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    behavior: url(/sites/all/libraries/PIE/PIE.htc);
+}
+
+.sf-menu>li ul li a {
+	text-transform: none;
+	color: #f0f0f0;
+    padding: 10px 0 0 7px;
+    height: 20px;
+}
+
+.sf-menu>li ul li ul {
+	margin-top: -5px;
+	margin-left: 13px;
+}

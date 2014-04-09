@@ -1,0 +1,97 @@
+#UbcNavWrapper
+{
+	margin: 0 auto 0 auto;
+	width: 980px;
+}
+
+.sf-menu
+{
+	margin: 0 auto 0 auto;
+	height: 39px;
+	background: #fff url(../images/header/mainNav2LiBg.gif) repeat-x;
+}
+
+.sf-menu li
+{
+	background: url(../images/header/mainNav2Bg.gif) no-repeat center right;
+	height: 25px;
+	padding: 14px 10px 0;
+	font-weight: bold;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+.sf-menu li:hover
+{
+	background: #fff;
+}
+
+.sf-menu li a
+{
+	color: #123B5C;
+	text-decoration: none;
+}
+
+.sf-menu li ul li
+{
+	background: none repeat scroll 0 0 #708EA1;
+	font-size: 12px;
+    height: 13px;
+    padding: 6px 0 0 17px;
+    text-align: left;
+}
+
+.sf-menu li ul li.first
+{
+	margin-top: 12px;
+	padding-top: 10px;
+/* 	border-top: 2px solid #454545; */
+}
+
+.sf-menu li ul li.last 
+{
+/*     border-bottom: 2px solid #454545; */
+    padding-bottom: 13px;
+}
+
+.sf-menu li ul li.sf-total-children-1 ul li {
+	padding-top: 8px;
+	margin-top: -5px;
+/* 
+	border-top: 2px solid #454545;
+    border-bottom: 2px solid #454545;
+ */
+    padding-bottom: 8px;
+}
+
+.sf-menu li ul li:hover
+{
+/* 	background: none repeat scroll 0 0 #f2f2f2; */
+	background: none repeat scroll 0 0 #708EA1;
+}
+
+.sf-menu li ul li a
+{
+	color: #fff;
+	text-transform: none;
+}
+.sf-menu li ul li a:hover
+{
+	color: #123b5c;
+}
+
+.sf-menu li ul li ul
+{
+ 	margin-left: 2px;
+}
+
+.sf-menu li ul li ul li.first
+{
+	margin-top: 0px;
+/* 	border-top: 2px solid #454545; */
+}
+
+.sf-menu li ul li ul li ul
+{
+	margin-left: 17px;
+}

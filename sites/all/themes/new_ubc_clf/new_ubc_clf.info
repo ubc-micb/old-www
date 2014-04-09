@@ -1,0 +1,30 @@
+name 				= UBC CLF Theme (new)
+core 				= 7.x
+engine 				= phptemplate
+
+regions[content] 		= Content
+regions[sidebar_left]		= Left sidebar
+regions[sidebar_right]	 	= Right sidebar
+regions[menu]			= Navigation Bar
+regions[footer]			= Footer
+regions[calendar]		= Front Page Calendar
+regions[welcome]		= Front Page Welcome Message
+regions[left]			= Front Page Left Column
+regions[right]			= Front Page Right Column
+regions[slideshow]		= Front Page Slideshow
+regions[search]			= Search Form
+
+features[] 			= name
+features[] 			= main_menu
+features[]			= favicon
+features[]			= logo
+
+stylesheets[all][]		= css/global.css
+stylesheets[all][]		= css/header.css
+stylesheets[all][]		= css/menu.css
+stylesheets[all][]		= css/content.css
+stylesheets[all][]		= css/footer.css
+stylesheets[all][]		= css/front.css
+stylesheets[all][]		= css/other.css
+
+scripts[]			= js/megamenu.js

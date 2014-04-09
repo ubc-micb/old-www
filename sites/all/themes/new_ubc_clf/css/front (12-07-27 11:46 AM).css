@@ -1,0 +1,195 @@
+
+
+#UbcContentFrontPage
+{
+	width:920px;
+	margin:0 auto 0 auto;
+}
+
+#UbcWelcomeMessage
+{
+    background: none repeat scroll 0 0 #F0F0F0;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    padding: 0 10px;
+    position: relative;
+    width: 958px;
+}
+
+#UbcWelcomeMessage div.arrow-border
+{
+    border-color: #c0c0c0 transparent transparent;
+    border-style: solid;
+    border-width: 15px;
+    bottom: -30px;
+    height: 0;
+    left: 30px;
+    position: absolute;
+    width: 0;
+}
+
+#UbcWelcomeMessage div.arrow
+{
+    border-color: #F0F0F0 transparent transparent;
+    border-style: solid;
+    border-width: 15px;
+    bottom: -29px;
+    height: 0;
+    left: 30px;
+    position: absolute;
+    width: 0;
+}
+
+#UbcWelcomeMessage h2
+{
+/* 
+	border-bottom: 1px dotted #454545;
+    border-top: 6px solid #578CB3;
+ */
+    padding: 4px 0 6px;
+}
+
+#UbcWelcomeMessage p
+{
+color: #656464;
+    font: 300 22px/1.625 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-left:25px;
+}
+
+#UbcFrontCalendar
+{
+/* border-left: 1px solid #E3E3E3; */
+    float: left;
+    padding: 10px 15px 30px 15px;
+    width: 170px;
+}
+
+#UbcFrontPageLeft
+{
+    float: left;
+    margin: 0 61px 0 0;
+    width: 424px;
+}
+#UbcFrontPageRight
+{
+	float: left;
+    width: 424px;
+}
+
+.news a, .front-page-calendar .view-footer a
+{
+	font-weight: bold;
+	text-decoration: none;
+	color: #717171;
+}
+
+.news a:hover, .front-page-calendar .view-footer a:hover
+{
+	text-decoration: underline;
+}
+
+.news .news-row
+{
+	border-bottom:1px dotted #454545;
+}
+
+.news .view-footer
+{
+	float: left;
+}
+
+.news .feed-icon
+{
+	float: left;
+	padding: 7px 0 0 3px;
+}
+
+#UbcFrontPageLeft h2, #UbcFrontPageRight h2
+{
+	color: #454545;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-bottom: 3px solid #578CB3;
+    font-size: 20px;
+    line-height: 33px;
+    margin: 0 0 5px;
+}
+
+#UbcFrontSlideshow
+{
+	float:left;
+}
+
+.front-slideshow
+{
+	height:343px;
+	width:740px;
+	margin-bottom:30px;
+}
+
+.front-slideshow .slideshow-title
+{
+	background: none repeat scroll 0 0 rgba(255, 102, 0, 0.7);    bottom: 307px;
+    height: 200px;
+    padding: 5px 20px 0 20px;
+    position: relative;
+    right: -460px;
+    width: 240px;
+    z-index: 2;
+}
+
+.front-slideshow .views-slideshow-controls-bottom
+{
+	bottom: 46px;
+    left: 42px;
+    position: relative;
+	z-index:6;
+	width:200px;
+}
+
+
+.front-slideshow .views-slideshow-controls-bottom .views-slideshow-pager-field-item 
+{
+	background-color: #f2f0df;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 0 2px #333333;
+    height: 14px;
+    width: 14px;
+    float:left;
+    margin: 0 16px 0 0;
+	text-indent: -5000px;
+	cursor: pointer;
+
+}
+
+.front-slideshow .views-slideshow-controls-bottom .views-slideshow-pager-field-item.active 
+{
+	background-color: #7A6A53;
+}
+
+.views_slideshow_cycle_main, .views-slideshow-cycle-main-frame, .views-slideshow-cycle-main-frame-row, .views-slideshow-cycle-main-frame-row-item
+{
+	height:343px;
+}
+
+.front-slideshow h3.article_slideshow
+{
+	font-family: Georgia,"Times New Roman",Times,serif;
+	line-height:1.2em;
+	font-size:1.3em;
+	color: #ffffff;
+}
+
+.article_slideshow_links {
+    bottom: 14px;
+    position: absolute;
+}
+
+.article_slideshow_links a {
+    color: #FFFFFF;
+	font-family: Georgia,"Times New Roman",Times,serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+}

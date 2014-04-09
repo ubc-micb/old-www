@@ -1,0 +1,15 @@
+name = Domain Theme
+description = Assign themes to domains created by the Domain Access module
+package = Domain Access
+dependencies[] = domain
+core = 7.x
+files[] = domain_theme.domain.inc
+files[] = domain_theme.module
+files[] = domain_theme.admin.inc
+
+; Information added by drupal.org packaging script on 2013-01-27
+version = "7.x-3.8"
+core = "7.x"
+project = "domain"
+datestamp = "1359324096"
+

@@ -1,0 +1,206 @@
+/******************************* 
+	content.css
+ Styles for the regions between the navigation menu and the footer
+ *******************************/
+
+.UbcPageWrapper {
+/* 
+	background: #fff;
+	min-height: 100%;
+	width: 980px;
+	margin: 0 auto;
+ */
+/* 
+	bottom: 0;
+	box-shadow: 
+    	4px 0 4px -4px #ccc,
+    	-4px 0 4px -4px #ccc;
+    -moz-box-shadow: 
+      	4px 0 4px -4px #ccc;
+    	-4px 0 4px -4px #ccc;
+	-webkit-box-shadow:
+	    4px 0 4px -4px #ccc;
+    	-4px 0 4px -4px #ccc;
+    -o-box-shadow:
+    	4px 0 4px -4px #ccc;
+    	-4px 0 4px -4px #ccc;
+    display: block;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 980px;
+    z-index: -1000;
+	behavior: url(/sites/all/libraries/PIE/PIE.htc);
+ */
+}
+
+#UbcContentWrapper {
+    overflow: hidden;
+    padding: 0 15px 10px;
+    width: 950px;
+    margin: 0 auto 0 auto;
+
+/* 
+    background: #fff;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    display: block;
+ */
+}
+
+/* ------ Breadcrumbs ------ */
+#UbcBreadCrumb {
+	font-weight: bold;
+	padding: 10px 0 5px 0;
+	border-bottom: 1px solid #e3e3e3;
+	overflow: hidden;
+	color: #123b5c;
+    font-size: 85%;
+    line-height: 119%;
+}
+
+#UbcBreadCrumb a, #UbcBreadCrumb span {
+	color: #5d5d5d;
+}
+
+/* ------ Content Area ------ */
+#UbcContentOneColumn {
+	float: left;
+	width: 945px;
+	overflow: hidden;
+}
+
+#UbcContentTwoColumn {
+    float: left;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 10px;
+    width: 732px; //703
+}
+
+/* ------ Sidebar ------ */
+
+#UbcLeftSidebar {
+   	border-bottom: 1px solid #E3E3E3;
+    border-left: 1px solid #E3E3E3;
+    border-right: 1px solid #E3E3E3;
+    float: left;
+    margin-top: 15px;
+    overflow: hidden;
+    width: 186px; //215
+}
+
+#UbcLeftSidebar h2 {
+	margin: 0 0 5px;
+	padding-left: 10px;
+}
+
+ul.menu {
+	margin: 0;
+	padding: 0;
+	text-align: inherit;
+}
+
+ul.menu li {
+	margin: 0;
+	list-style: none;
+	padding: inherit;
+}
+
+.menu-block-wrapper .menu a {
+	display: block;
+	color: #758291;
+	text-decoration: none;
+	padding-right: 5px;
+}
+
+.menu-block-wrapper>ul>li>a {
+	border-bottom: 1px solid #e3e3e3;
+	padding: 4px 10px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.menu-block-wrapper>ul>li.last>a {
+	border-bottom: none;
+}
+
+.menu-block-wrapper>ul>li.dhtml-folder>a {
+	padding-left: 28px;
+}
+
+.menu-block-wrapper>ul>li.dhtml-folder.expanded>a {
+	background: url("../images/content/expanded.gif") no-repeat scroll 10px 11px transparent;
+}
+.menu-block-wrapper>ul>li.dhtml-folder.collapsed>a {
+	background: url("../images/content/collapsed.gif") no-repeat scroll 10px 11px transparent;
+}
+
+.menu-block-wrapper>ul>li.active-trail>a {
+	color: #494949;
+}
+
+.menu-block-wrapper>ul>li>ul {
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.menu-block-wrapper>ul>li.last>ul {
+	border-top: 1px solid #e3e3e3;
+	border-bottom: none;
+	margin-bottom: 5px;
+}
+
+.menu-block-wrapper>ul>li ul li {
+	padding-left: 15px;
+}
+
+.menu-block-wrapper>ul>li ul li.dhtml-folder.expanded>a {
+	background: url("../images/content/expanded.gif") no-repeat scroll 0 7px transparent;
+}
+.menu-block-wrapper>ul>li ul li.dhtml-folder.collapsed>a {
+	background: url("../images/content/collapsed.gif") no-repeat scroll 0 7px transparent;
+}
+
+.menu-block-wrapper>ul>li ul li.dhtml-folder>a {
+	padding-left: 15px;
+}
+
+.menu-block-wrapper>ul>li ul li.dhtml-folder>a>a.dhtml-menu-icon {
+	left: -18px !important;
+	padding-right: 0;
+}
+
+.menu-block-wrapper>ul>li>ul>li.active-trail {
+	background-color: #f0f0f0;
+}	
+
+.menu-block-wrapper>ul>li ul li.active>a {
+	font-weight: normal;
+	color: #494949;
+}
+
+/* ------ Footer block ------ */
+
+#UbcLogin {
+	text-align: right;
+	height: 29px;
+	width: 950px;
+	margin: 0 auto;
+}
+
+#UbcLogin a {
+	color: #717171;
+	font-weight: bold;
+	text-decoration: none;
+	padding-right: 6px;
+}
+
+#UbcLogin a:hover {
+	text-decoration: underline;
+}

@@ -1,0 +1,235 @@
+/******************************* 
+	front.css
+ Stylesheet for the blocks on the front page
+ *******************************/
+
+/* ------ Structural Elements ------ */
+#UbcFrontPageWrapper {
+  width: 980px;
+  min-width: 980px;
+  margin: 0 auto 0 auto;
+}
+
+#UbcFrontContentWrapper {
+  overflow: hidden;
+  padding: 0 15px 10px;
+  width: 948px;
+  margin: 20px auto;
+}
+
+.UbcFrontContent {
+  background-color: #fff;
+  box-shadow: 0 0 4px 0 #ccc;
+  -moz-box-shadow: 0 0 4px 0 #ccc;
+  -webkit-box-shadow: 0 0 4px 0 #ccc;
+  -o-box-shadow: 0 0 4px 0 #ccc;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  behavior: url(/sites/all/libraries/PIE/PIE.htc);
+}
+
+#UbcFrontPageLeft, #UbcFrontPageRight {
+  float: left;
+  width: 440px;
+  padding: 10px 20px 7px;
+}
+
+#UbcFrontPageLeft h2, #UbcFrontPageRight h2 {
+  color: #454545;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-bottom: 3px solid #578CB3;
+  font-size: 20px;
+  line-height: 33px;
+  margin: 0 0 5px;
+}
+
+#UbcFrontPageLeft {
+  margin-right: 10px;
+}
+
+#UbcFrontPageRight {
+  margin-left: 10px;
+}
+
+/* ------ Welcome Message ------ */
+#UbcWelcomeMessage {
+  position: relative;
+  width: 643px;
+}
+
+#UbcWelcomeMessage p {
+  color: #000000; /* 656464; */
+}
+
+/* ------ Calendar/Events Quicktabs ------ */
+
+#UbcFrontCalendar {
+  float: left;
+  padding: 17px 5px 0 19px;
+  width: 284px;
+}
+
+#quicktabs-calendar .quicktabs-tabs li {
+  margin: 0 -5px 0 0;
+  padding: 5px 0;
+  background: none repeat scroll 0 0 #C3D6E4;
+}
+
+#quicktabs-calendar li.active
+{
+  position: relative;
+  background: none repeat scroll 0 0 #123B5C;
+}
+
+#quicktabs-calendar li a
+{
+  text-decoration: none;
+  color: #0a2031;
+  padding: 5px 15px;
+}
+
+#quicktabs-calendar li.active a
+{
+  color: #fff;
+}
+
+#quicktabs-calendar li.active:after
+{
+  border-color: #123B5C transparent transparent;
+  border-style: solid;
+  border-width: 6px;
+  content: "";
+  display: block;
+  height: 0;
+  left: 40%;
+  position: absolute;
+  top: 100%;
+  width: 0;
+}
+
+#quicktabs-calendar .calendar-info {
+  max-width: 14.7em;
+}
+
+/* ------ Department News block ------ */
+.news a, .front-page-calendar .view-footer a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #717171;
+}
+
+.news h3.news-title {
+  margin: 0;
+  font-size: 1.10em;
+}
+
+.news h3.news-title a {
+  color: #123b5c;
+}
+
+.news h3.news-title a:hover {
+  text-decoration: none;
+} 
+
+.news .view-footer a:hover, .front-page-calendar .view-footer a:hover {
+  text-decoration: underline;
+}
+
+
+.news .views-row {
+  padding: 10px 0;
+  border-bottom: 1px dotted #454545;
+}
+
+.news .views-row-first {
+  padding-top: 4px;
+}
+
+.news .view-footer {
+  float: left;
+}
+
+.news .feed-icon {
+  float: left;
+  padding: 7px 0 0 3px;
+}
+
+/* ------ Articles Slideshow block ------ */
+.front-slideshow {
+  float: left;
+  height: 300px;
+  width: 640px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+.front-slideshow .slideshow-title {
+  background-color: rgb(0, 71, 158);
+  background-color: rgba(0, 71, 158, 0.78);
+  bottom: 261px;
+  height: 200px;
+  padding: 5px 20px 0;
+  position: relative;
+  right: -360px;
+  width: 240px;
+  z-index: 2;
+  -pie-background: rgba(0, 70, 172, 0.7);
+  behavior: url(/sites/all/libraries/PIE/PIE.htc);
+}
+
+.front-slideshow .views-slideshow-controls-bottom {
+  bottom: 42px;
+  left: 35px;
+  position: relative;
+  z-index: 6;
+  width: 200px;
+}
+
+.front-slideshow .views-slideshow-controls-bottom .views-slideshow-pager-field-item {
+  background-color: #f2f0df;
+  border-radius: 14px 14px 14px 14px;
+  -moz-border-radius: 14px 14px 14px 14px;
+  -webkit-border-radius: 14px 14px 14px 14px;
+  -o-border-radius: 14px 14px 14px 14px;
+  box-shadow: 0 0 2px #333333;
+  -moz-box-shadow: 0 0 2px #333333;
+  -o-box-shadow: 0 0 2px #333333;
+  -webkit-box-shadow: 0 0 2px #333333;
+  height: 14px;
+  width: 14px;
+  float: left;
+  margin: 0 16px 0 0;
+  text-indent: -5000px;
+  cursor: pointer;
+  behavior: url(/sites/all/libraries/PIE/PIE.htc);
+}
+
+.front-slideshow .views-slideshow-controls-bottom .views-slideshow-pager-field-item.active {
+  background-color: #013e52;
+}
+
+.views_slideshow_cycle_main, .views-slideshow-cycle-main-frame, .views-slideshow-cycle-main-frame-row, .views-slideshow-cycle-main-frame-row-item {
+  height: 300px;
+}
+
+.front-slideshow h3.article_slideshow {
+  font-family: Georgia,"Times New Roman",Times,serif;
+  line-height: 1.2em;
+  font-size: 1.3em;
+  color: #ffffff;
+}
+
+.article_slideshow_links {
+  bottom: 14px;
+  position: absolute;
+}
+
+.article_slideshow_links a {
+  color: #FFFFFF;
+  font-family: Georgia,"Times New Roman",Times,serif;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}

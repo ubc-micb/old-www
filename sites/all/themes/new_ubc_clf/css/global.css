@@ -1,0 +1,165 @@
+/******************************* 
+	global.css
+ Styles for common or generic elements present in many pages, 
+ as well as the main structural elements
+ *******************************/
+
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+body {
+	background: url("../images/content/bg.png") repeat scroll center center #DCDCDC;
+    color: #303030;
+    font: 12px/1.8em Verdana,Arial,Helvetica,sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+
+/* ------ Styles required for sticky footer ------ */
+.wrapper {
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -183px;
+	min-height: 100%;
+	width: 980px;
+	background: #fff;
+	box-shadow: 
+    	4px 0 4px -4px #ccc,
+    	-4px 0 4px -4px #ccc;
+    -moz-box-shadow: 
+      	4px 0 4px -4px #ccc;
+    	-4px 0 4px -4px #ccc;
+	-webkit-box-shadow:
+	    4px 0 4px -4px #ccc;
+    	-4px 0 4px -4px #ccc;
+    -o-box-shadow:
+    	4px 0 4px -4px #ccc;
+    	-4px 0 4px -4px #ccc;
+}
+
+.wrapper.front {
+	background: none;
+	box-shadow: 0 0 0 0;
+}
+
+.footer, .push {
+	height: 183px;
+}
+
+/* ------ Some common typography styles ------ */
+h1, h2, h3, h4, h5, h6
+ {
+	color: #123b5c;
+	
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 1.7em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+	font-size: 0.83em;
+}
+
+h6 {
+	font-size: 0.75em;
+}
+
+
+
+a 
+{
+
+	color: #708ea1;
+	
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6
+ a {
+
+	text-decoration: none;
+}	
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6
+ a:hover {
+
+	text-decoration: underline;
+}	
+
+#UbcContentTwoColumn img, #UbcContentOneColumn img {
+	max-width: 100%;
+	height: auto!important;
+}
+
+.clear {
+	clear: both;
+}
+
+dt {
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+pre {
+	color: #5d5d5d;
+	
+	font: 12px/1.8em Verdana,Arial,Helvetica,sans-serif;
+}
+
+#hr {
+#	border: none;
+#	height: 1px;
+#}
+
+th {
+	border: none;
+	background-color: #a5bdd1;
+	color: #ffffff;
+}
+
+tbody, tr.even, tr.odd, td.active {
+	background: none;
+	border: none;
+}
+
+.item-list ul li {
+	margin: 0;
+}
+
+/* ------ CKEditor related ------ */
+
+/* redefine strong for consistent cross-browser rendering */
+strong {
+	font-weight: bold;
+}
+
+/* hide the text under the text editor */
+.filter-guidelines {
+	display: none;
+}

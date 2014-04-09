@@ -1,0 +1,161 @@
+
+body {
+  margin: 1em;
+  background-color: #fff;
+  font-family: sans-serif;
+}
+th {
+  text-align: left; /* LTR */
+  color: #006;
+  border-bottom: 1px solid #ccc;
+}
+tr.odd {
+  background-color: #ddd;
+}
+tr.even {
+  background-color: #fff;
+}
+td {
+  padding: 5px;
+}
+#menu {
+  visibility: hidden;
+}
+#main {
+  margin: 1em;
+}
+a:link {color: #000;}
+a:visited {color: #000;}
+a:hover {color: #00f;}
+a:link img, a:visited img {border: 0;}
+.print-footnote {font-size: xx-small;}
+img.print-logo {border: 0;}
+.print-site_name {}
+.print-breadcrumb {font-size: x-small;}
+.print-title {}
+.print-submitted {font-size: small;}
+.print-created {font-size: small;}
+.print-taxonomy {
+  text-align: right;
+}
+.print-taxonomy li {display: inline;}
+.print-content {}
+.print-hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  color: #9E9E9E;
+  background-color: #9E9E9E;
+}
+.print-message {
+  border: medium dotted blue;
+  padding: 1em;
+}
+.print-source_url {font-size: small;}
+.print-links {font-size: small;}
+.print-footer {text-align: center;}
+.print-header {
+        height: 98px;
+        min-width: 800px;
+        border-bottom: 1px solid #123B5C;
+    border-top: 1px solid #123B5C;
+        margin-bottom: 10px;
+        overflow:hidden;
+}
+
+.print-ubc-logo {
+        width: 94px;
+        border-right: 3px solid #123b5c;
+        color: #123b5c;
+        float:left;
+        height: 98px;
+	background-image:url('/sites/all/themes/new_ubc_clf/images/header/ubcLogo.gif');
+}
+
+.print-placeofmind {
+        width: 187px;
+        border-right: 3px solid #123b5c;
+        float:left;
+        height: 98px;
+}
+
+.print-placeofmind p {
+        color: #123B5C;
+    font-size: 90%;
+    letter-spacing: 1px;
+        padding: 2px 0 0 20px;
+}
+
+.print-science {
+        width: 280px;
+        float:left;
+        height: 98px;
+}
+
+.print-science p {
+color: #123B5C;
+    font-size: 10px;
+    letter-spacing: 3px;
+    padding: 10px 0 0 20px;
+}
+
+.print-dept {
+        width: 220px;
+        float:left;
+        height: 98px;
+}
+
+.print-dept p {
+        color: #123B5C;
+    font-size: 84%;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+
+.seminar-event {
+        width: 580px;
+        margin: 0 auto 0 auto;
+        border-width: 5px;
+        border-style: groove;
+        padding: 15px;
+        text-align: center;
+}
+
+.seminar-event h1 {
+        font-size: 1.9em;
+        color: #000;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 0px;
+}
+
+.seminar-event h2 {
+        font-size: 1.6em;
+        color: #000;
+        font-weight: bold;
+        margin-top: 20px;
+}
+
+.seminar-event h3 {
+        font-size: 1.4em;
+        color: #000;
+        font-weight: normal;
+}
+
+.seminar-event h4 {
+        font-size: 1.2em;
+        font-weight: normal;
+        color: #000;
+}
+
+.seminar-event .body {
+
+        border-top: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+        margin: 0 10px;
+        color:#000;
+        font-size: 13px;
+        font-style: italic;
+
+}
+

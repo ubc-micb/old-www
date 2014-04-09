@@ -1,0 +1,142 @@
+#UbcContentWrapper
+{
+	width:980px;
+	margin: 0 auto 0px auto;
+	padding: 0px 0px 10px 0px;
+	overflow: hidden;
+/* 	background: #ffffff; */
+/* 	border-top: 1px solid #e3e3e3; */
+	height:100%;
+}
+
+#UbcBreadCrumb
+{
+/* 	font-size: 90%; */
+	font-weight: bold;
+	padding: 10px 0 5px 20px;
+	border-bottom: 1px solid #e3e3e3;
+	overflow: hidden;
+	color: #123b5c;
+    font-size: 85%;
+    line-height: 119%;
+}
+
+#UbcBreadCrumb a
+{
+	color: #5d5d5d;
+}
+
+#UbcBreadCrumb a:hover
+{
+	text-decoration: none;
+}
+
+#UbcContent
+{
+	float:left;
+	width: 619px;
+	overflow:hidden;
+	padding-left: 5px;
+    padding-right: 15px;
+    
+	background-color: #ffffff;
+}
+
+#UbcContentTwoColumn
+{
+	float:left;
+	width: 784px;
+	overflow:hidden;
+	padding: 5px 10px 10px 20px;
+	background-color: #ffffff;
+}
+#UbcContent img, #UbcContentTwoColumn img
+{
+	max-width:100%;
+	height:auto!important;
+}
+
+#UbcLeftSidebarWrapper
+{
+	float: left;
+	width: 175px;
+	overflow: hidden;
+}
+
+#UbcRightSidebarWrapper
+{
+	float: left;
+	width: 165px;
+	overflow: hidden;
+/* 	border-left: 1px solid #E3E3E3; */
+	min-height:100%;
+}
+
+#LeftSidebar, #RightSidebar
+{
+	padding: 0px 8px 0px 8px;
+	font-size: 90%;
+}
+
+#LeftSidebar ul.menu, #RightSidebar ul.menu
+{
+	padding: 0;
+}
+
+.menu-block-wrapper>ul
+{
+	border-width: 1px;
+    border-style: solid;
+    border-color: #ababab;
+}
+
+.menu-block-wrapper>ul.menu>li.dhtml-folder.collapsed>a, .menu-block-wrapper>ul.menu>li.dhtml-folder.expanded>a, #RightSidebar ul.menu li.dhtml-folder.collapsed>a, #RightSidebar ul.menu li.dhtml-folder.expanded>a, .menu-block-wrapper>ul.menu>li>a, #RightSidebar .content>ul.menu>li>a {
+	background-color: #CFD9DF!important;
+	font-weight:bold;
+}
+
+#LeftSidebar ul.menu li.active-trail>a, #RightSidebar ul.menu li.active-trail>a
+{
+	font-style:italic;
+	font-weight:bold;
+}
+
+#LeftSidebar ul.menu li, #RightSidebar ul.menu li {
+	background-color: #F2F2F2;
+}
+
+.menu-block-wrapper>ul.menu>li.leaf>a, #RightSidebar .content>ul.menu>li.leaf>a
+{
+    padding-left: 7px;
+    font-weight:bold;
+}
+
+#LeftSidebar ul.menu li ul li.leaf, #RightSidebar ul.menu li ul li.leaf
+{
+	background: none repeat scroll 0 0 transparent;
+    margin-left: -7px;
+}
+
+
+#LeftSidebar ul.menu li ul li.last, #RightSidebar ul.menu li ul li.last
+{
+	border: none;
+}
+#LeftSidebar ul.menu li ul li ul li, #RightSidebar ul.menu li ul li ul li
+{
+	padding: 0 0 0 9px;
+}
+
+#LeftSidebar ul.menu li a, #RightSidebar ul.menu li a
+{
+	display: block;
+	padding-bottom: 2px;
+    padding-top: 2px;
+	color: #494949;
+	text-decoration: none;
+	font-size: 95%;
+}
+
+#LeftSidebar ul.menu li.dhtml-folder.expanded a, #RightSidebar ul.menu li.dhtml-folder.expanded a, #LeftSidebar ul.menu li.dhtml-folder.collapsed a, #RightSidebar ul.menu li.dhtml-folder.collapsed a {
+	padding-left: 13px;
+}

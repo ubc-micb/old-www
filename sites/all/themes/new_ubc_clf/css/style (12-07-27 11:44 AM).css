@@ -1,0 +1,145 @@
+html
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width:100%;
+}
+
+body 
+{
+	margin:0;
+/* 
+	font-size: 12px;
+	font-family: Helvetica, Myriad Pro, Arial, sans-serif;
+	
+ */
+/* 
+	font: 300 13px/1.625 Arial,sans-serif;
+	color: #5d5d5d;
+	
+ */
+ 
+ 
+	font: 12px/1.8em Verdana,Arial,Helvetica,sans-serif;
+	color: #303030;
+	background: #DCDCDC url(../images/new/snow.png) repeat center center;
+
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+
+
+
+h1, h2, h3, h4, h5, h6
+
+{
+	
+	font-weight: bold;
+	color: #123b5c;
+}
+
+h1
+{
+	font-size: 1.7em;
+}
+
+h2
+{
+	font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5
+{
+	font-size: 0.83em;
+}
+
+h6
+{
+	font-size: 0.75em;
+}
+
+
+
+a
+
+{
+
+	color: #708ea1;
+	
+	text-decoration: underline;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6
+ a
+{
+
+	text-decoration: none;
+}	
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6
+ a:hover
+{
+
+	text-decoration: underline;
+}	
+
+dt {
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+.wrapper 
+{
+	min-height:100%;
+	height: auto !important;
+	height:100%;
+	margin: 0 auto -147px;
+	width:100%;
+	/* background: transparent url(../images/content/content_bg.png) repeat-y center center; */
+}
+
+.footer, .push
+{
+	height: 147px;
+	clear: both;	
+}
+
+
+
+#first-time 
+{
+
+	display: none;
+
+}
+
+
+
+
+.clear
+{
+	clear:both;
+}
+
+pre
+{
+	font: 12px/1.8em Verdana,Arial,Helvetica,sans-serif;
+	color: #5d5d5d;
+	
+}
+
+strong
+{
+	font-weight:bold;
+}

@@ -1,0 +1,2 @@
+<?php print render($content) ?>
+<p class="back"><a href="/news-events/news">< All News</a></p>

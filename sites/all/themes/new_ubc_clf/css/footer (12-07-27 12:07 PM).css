@@ -1,0 +1,61 @@
+#UbcBottomInfoWrapper
+{
+	border-top: 3px solid #0e2f49;
+	background-color: #ffffff;
+	min-width:980px;
+}
+
+#UbcBottomInfo
+{
+	width: 980px;
+	height: 50px;
+	margin: 0 auto 0 auto;
+	padding: 20px 0 30px;
+}
+
+#UbcBottomInfoLeft
+{
+	float: left;
+}
+
+#UbcBottomInfoRight
+{
+	float: right;
+}
+
+#UbcBottomInfoRight p
+{
+	color: #758291;
+	font-size: 80%;
+	font-weight: bold;
+	line-height: 1.5em;
+	margin-right: 22px;
+}
+
+#UbcUtilNavWrapper
+{
+	background: #001c33;
+	height: 47px;
+	padding: 1px;
+	min-width:978px;
+}
+
+#UbcUtilNavWrapper p
+{
+	color: #fff;
+	font-size: 80%;
+	font-weight: bold;
+	margin: 1.5em 0;
+	text-align: center;
+}
+
+#UbcUtilNavWrapper p a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+#UbcUtilNavWrapper p a:hover
+{
+	text-decoration: underline;
+}

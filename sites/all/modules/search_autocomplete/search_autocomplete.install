@@ -1,0 +1,259 @@
+<?php
+
+/**
+ * @file
+ * This file is used to install/update/delete the module tables in database
+ *
+ * @authors
+ * Miroslav Talenberg (Dominique CLAUSE) <http://www.axiomcafe.fr/contact>
+ *
+ * Sponsored by:
+ * www.axiomcafe.fr
+ */
+
+// -----------------------------------------------------------------------------------------------
+/**
+ * Implementation of hook_schema().
+ * Set the schema of database
+ * @return the schema for of the table to create
+ */
+ function search_autocomplete_schema() {
+  // schema for search_autocomplete database
+  $schema['search_autocomplete_forms'] = array(
+    'description' => t('Store the forms to autocomplete using Search Autocomplete.'),
+    'fields' => array(
+      'fid'       => array(
+        'type'        => 'serial',
+        'unsigned'    => TRUE,
+        'not null'    => TRUE,
+      ),
+      'title'     => array(
+        'description' => 'Human readable name for the form',
+        'type'        => 'varchar',
+        'length'      => 255,
+        'not null'    => TRUE,
+        'default'     => '',
+      ),
+      'selector'  => array(
+        'description' => 'Reference id selector of the the form in drupal',
+        'type'        => 'varchar',
+        'length'      => 255,
+        'not null'    => TRUE,
+        'default'     => '',
+      ),
+      'weight'    => array(
+        'description' => 'Form weight in table',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'enabled'   => array(
+        'description' => 'Define if autocomplete is activated or not',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'parent_fid' => array(
+        'description' => 'Define if the from follows the configuration of another one',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 0,
+      ),
+      'min_char'  => array(
+        'description' => 'Minimum of character before triggering suggestions',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 3,
+      ),
+      'max_sug'   => array(
+        'description' => 'Maximum number of suggestions',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 15,
+      ),
+      'auto_submit'   => array(
+        'description' => 'Define if form should be autosubmitted when suggestion is choosen',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 1,
+      ),
+      'auto_redirect'   => array(
+        'description' => 'Define if user should be redirected to suggestion directly',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 1,
+      ),
+      'data_source'  => array(
+        'description' => 'Should data come from callback or from static ressource',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 1,
+      ),
+      'data_callback'  => array(
+        'description' => 'Callback URL for data source',
+        'type'        => 'varchar',
+        'length'      => 255,
+        'default'     => '',
+      ),
+      'data_static'  => array(
+        'description' => 'Static text as a data',
+        'type'        => 'text',
+      ),
+      'theme'  => array(
+        'description' => 'Theme to use with this form',
+        'type'        => 'varchar',
+        'length'      => 255,
+        'not null'    => TRUE,
+        'default'     => 'lightness',
+      ),
+    ),
+    'primary key' => array('fid'),
+  );
+
+  return $schema;
+} // function search_autocomplete_schema
+
+//-----------------------------------------------------------------------------------------------
+/**
+ * Implementation of hook_install().
+ */
+function search_autocomplete_install() {
+  global $base_url;
+  
+  $limit            = variable_get('search_autocomplete_limit', 15);
+  $trigger          = variable_get('search_autocomplete_trigger', 3);
+  $enabled          = 1;
+
+  // ----------------
+  // declare insertion statement
+  $insert = db_insert('search_autocomplete_forms')
+         ->fields(array('title', 'selector', 'weight', 'enabled', 'min_char', 'max_sug', 'auto_submit', 'auto_redirect', 'data_source', 'data_callback', 'data_static', 'theme'));     
+  $insert->values(array(
+    'title' => st('Search page - Node Tab') . "  (search/node/%)",
+    'selector'      => '#search-form[action="/search/node"] #edit-keys',
+    'weight'        => 0,
+    'enabled'       => $enabled,
+    'min_char'      => $trigger,
+    'max_sug'       => $limit,
+    'auto_submit'   => 1,
+    'auto_redirect' => 1,
+    'data_source'   => 1,
+    'data_callback' => 'autocomplete-nodes',
+    'data_static'   => '',
+    'theme'         => 'classic.css'
+  ));
+  $insert->values(array(
+    'title'     => st('Search page - User Tab') . "  (search/user/%)",
+    'selector'  => '#search-form[action="/search/user"] #edit-keys',
+    'weight'    => 1,
+    'enabled'   => $enabled,
+    'min_char'  => $trigger,
+    'max_sug'   => $limit,
+    'auto_submit'   => 1,
+    'auto_redirect' => 1,
+    'data_source'   => 1,
+    'data_callback' => 'autocomplete-users',
+    'data_static'   => '',
+    'theme'         => 'classic.css'
+  ));
+  $insert->values(array(
+    'title'     => st('Search Block'),
+    'selector'  => "#edit-search-block-form--2",
+    'weight'    => 0,
+    'enabled'   => $enabled,
+    'min_char'  => $trigger,
+    'max_sug'   => $limit,
+    'auto_submit'   => 1,
+    'auto_redirect' => 1,
+    'data_source'   => 1,
+    'data_callback' => 'autocomplete-nodes',
+    'data_static'   => '',
+    'theme'         => 'classic.css'
+  ));
+  $insert->execute();
+
+  drupal_set_message(st('Search Autocomplete is now correctly installed!') . "<br/>" . st('If you see some functionalities missing or broken, please post an issue here:') . '  <a href="http://drupal.org/project/issues/search_autocomplete">http://drupal.org/project/issues/search_autocomplete</a>');
+
+
+} // function search_autocomplete_install
+
+/**
+ * Permission fix for update process from 6.x
+ */
+function search_autocomplete_update_7000() {
+  $t = get_t();
+  // In Drupal 6 the permissions were wrapped in t(), but in Drupal 7 they are
+  // not. So we want to make sure the database is storing the untranslated
+  // permission or we could run into issues on upgraded Drupal 7 sites.
+  db_update('role_permission')
+    ->fields(array(
+      'permission' => 'administer Search Autocomplete',
+    ))
+    ->condition('permission', $t('administer Search Autocomplete'))
+    ->execute();
+
+  db_update('role_permission')
+    ->fields(array(
+      'permission' => 'use Search Autocomplete',
+    ))
+    ->condition('permission', $t('use Search Autocomplete'))
+    ->execute();
+}
+
+/**
+  * Get ready for Search Autocomplete 7.3-x
+  */
+function search_autocomplete_update_7300(&$sandbox) {
+  $ret = array();
+
+  $num_deleted =  db_drop_table('search_autocomplete_forms');
+  $num_deleted &= db_drop_table('search_autocomplete_suggestions');
+  
+  db_create_table('search_autocomplete_forms', drupal_get_schema('search_autocomplete_forms', TRUE));
+  search_autocomplete_install();
+  
+  return t('The update process is successfull.');
+
+  // In case of an error, simply throw an exception with an error message.
+  throw new DrupalUpdateException('Something went wrong. Please uninstall and install the module again.');
+  return $ret;
+}
+/**
+  * Get ready for Search Autocomplete 7.x-3.0-rc2
+  */
+function search_autocomplete_update_7301(&$sandbox) {
+  global $base_url;
+  $ret = array();
+  
+  $result = db_select('search_autocomplete_forms', 'f')
+    ->fields('f', array('fid', 'data_callback'))
+    ->execute()
+    ->fetchAll();
+
+  foreach ($result as $item) {
+    db_update('search_autocomplete_forms')
+      ->fields(array(
+        'data_callback'   => str_replace($base_url . "/", "", $item->data_callback)
+      ))
+      ->condition('fid', $item->fid)
+      ->execute();
+  }
+  drupal_clear_js_cache();
+
+  return t('Update has:<br/>- change internal callback URL from absolute to relative.<br/>- clear JS cache.<br/> Done with success.');
+
+  // In case of an error, simply throw an exception with an error message.
+  throw new DrupalUpdateException('Something went wrong. Please uninstall and install the module again.');
+  return $ret;
+}
+
+/**
+  * Get ready for Search Autocomplete 7.x-3.0-rc3
+  */
+function search_autocomplete_update_7302(&$sandbox) {
+  $ret = array();
+  cache_clear_all();
+  return $ret;
+}
+
+// -----------------------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+name = Domain Settings
+description = Expanded site configuration options for Domain Access.
+package = Domain Access
+dependencies[] = domain
+dependencies[] = domain_conf
+core = 7.x
+files[] = domain_settings.module
+
+; Information added by drupal.org packaging script on 2013-01-27
+version = "7.x-3.8"
+core = "7.x"
+project = "domain"
+datestamp = "1359324096"
+

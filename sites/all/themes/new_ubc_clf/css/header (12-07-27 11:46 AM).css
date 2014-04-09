@@ -1,0 +1,342 @@
+#UbcToolBarWrapper
+{
+	height: 33px;
+	background: #d1d9de;
+	min-width:980px;
+}
+
+#UbcToolBar
+{
+	width: 980px;
+	margin: 0 auto 0 auto;
+}
+
+#UbcToolNav {
+	float: right;
+	margin: 0;
+}
+
+#UbcToolNav li
+{
+	float: left;
+	height: 25px;
+	padding: 5px 7px 0 0;
+	list-style-type:none;
+}
+
+#UbcToolNav li a
+{
+	display: block;
+	height: 28px;
+	text-indent: -5000px;
+}
+
+#UbcToolNav li a#UbcCampusLinks
+{
+	width: 89px;
+	background: url(../images/header/campusesBtn.gif) no-repeat;
+}
+
+#UbcToolNav li a#UbcCampusLinks.UbcSelected
+{
+	background-position: 0 -28px;
+}
+
+#UbcToolNav li a#UbcDirectLinks
+{
+	width: 114px;
+	background: url(../images/header/directoryBtn.gif) no-repeat;
+}
+
+#UbcToolNav li a#UbcDirectLinks.UbcSelected
+{
+	background-position: 0 -28px;
+}
+
+#UbcToolNav li a#UbcQuickLinks
+{
+	width: 115px;
+	background: url(../images/header/quickLinkBtn.gif) no-repeat;
+}
+
+#UbcToolNav li a#UbcQuickLinks.UbcSelected
+{
+	background-position: 0 -28px;
+}
+
+#UbcToolNav li.UbcForm
+{
+	padding-left: 6px;
+	border-left: 1px solid #bcc3c7;
+}
+
+#UbcToolNav #UbcSearchForm input
+{
+	display: block;
+	float: left;
+}
+
+#UbcToolNav #UbcSearchForm input.UbcSearchBtn
+{
+	width: 22px;
+	height: 22px;
+	background: transparent url(../images/header/searchBtn.gif) no-repeat 0 -22px;
+}
+
+#UbcToolNav #UbcSearchForm input.UbcSearchField
+{
+	background: transparent url(../images/header/searchBox.gif) no-repeat;
+	width: 194px;
+	padding:3px 5px 3px 24px;
+	border: none;
+}
+
+#UbcHeaderWrapper
+{
+	height: 98px;
+	background-color: #002859;
+	
+}
+
+#UbcHeader
+{
+	width: 980px;
+	margin: 0 auto 0 auto;
+	padding: 0;
+}
+
+#UbcHeader li
+{
+	float: left;
+	height: 98px;
+	list-style-type:none;
+}
+
+#UbcHeader li a
+{
+	margin: 0;
+	padding: 0;
+	display: block;
+	height: 98px;
+	text-indent: -5000px;
+}
+
+#UbcHeader li a#UbcLogo
+{
+	width: 94px;
+	background: url(../images/header/ubcLogo.gif) no-repeat;
+	border-right: 3px solid #fff;
+}
+
+#UbcHeader li a#UbcMindLink
+{
+	border-right: 3px solid #fff;
+	width: 187px;
+	background: url(../images/header/PlaceOfMind-Gif-V04-on.gif) no-repeat;
+}
+
+#UbcHeader li a#UbcMindLink.selected
+{
+	background: url(../images/header/placeOfMind.gif) no-repeat;
+}
+
+#UbcHeader li a#UbcHeaderLine
+{
+	background: url(../images/header/ubcHeader.gif) no-repeat;
+	width: 379px;
+}
+
+#UbcHeader li a#UbcSubUnitLine
+{
+	background: url(../images/header/ubcSubUnit.gif) no-repeat;
+	width: 314px;
+}
+
+/* Mega nav */
+
+#UbcMegaMenuesWrapper
+{
+	border: none;
+	position:relative;
+	display:none;
+	overflow: hidden;
+	background: #002859 url(../images/header/megaMenuTopBg.gif) repeat-x top left;
+	min-width:980px;
+}
+
+.UbcMegaMenuesWrapper2
+{
+	background: transparent url(../images/header/megaMenuBottomBg.gif) repeat-x bottom left;
+
+}
+
+.UbcMegaMenues
+{
+	position: relative;
+	padding: 20px 0 20px;
+	width: 720px;
+	margin: 0 auto 0 auto;
+}
+
+.UbcCloseBtn a
+{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 90%;
+}
+
+.UbcCloseBtn a:hover
+{
+	text-decoration: underline;
+}
+
+.UbcMegaMenues ul
+{
+	margin:0;
+	padding:0;
+}
+
+.UbcMegaMenues li.UbcMenuSection
+{
+	float: left;
+	width: 220px;
+	padding: 0 20px 0px 0;
+	text-align: left;
+	list-style-type:none;
+}
+
+.UbcMegaMenues li.UbcMenuSection h3
+{
+	font-size: 120%;
+	color: #e3e3e3;
+}
+
+.UbcMegaMenues li.UbcMenuSection p
+{
+	color: #8f8f8f;
+	font-size: 100%;
+	line-height: 1.5em;
+	padding: 0.4em 0 0.4em;
+	margin: 0;
+
+}
+
+.UbcMegaMenues li.UbcMenuSection a
+{
+	color: #e3e3e3;
+	font-size: 100%;
+	text-decoration: none;
+}
+
+.UbcMegaMenues li.UbcMenuSection a.bluelink
+{
+	color: #708EA1;
+}
+
+.UbcMegaMenues li.UbcMenuSection a:hover
+{
+	text-decoration: underline;
+}
+
+div.UbcMenuSectionBox
+{
+	border-top: 1px solid #415f78;
+	border-bottom: 1px solid #415f78;
+}
+
+div.UbcMenuSectionTop
+{
+	border-top: 1px solid #415f78;
+}
+
+.loading {
+	background: transparent url(../images/loading.gif) no-repeat center center;
+}
+
+#UbcMegaMenuesWrapper.UbcMindLink
+{
+	background: #005893 url(../images/header/rssBgBottom.gif) repeat-x bottom left;
+	min-width:980px;
+}
+
+.UbcMegaMenuesWrapper2.UbcMindLink
+{
+	background: transparent url(../images/header/rssBgTop.gif) repeat-x top left;
+	color: #fff;
+	min-height:108px;
+}
+
+	.UbcMegaMenuesPOM
+	{
+		width:980px;
+		margin:0 auto 0 auto;
+	
+	}
+	.UbcMegaMenuesPOM .UbcPMCallout
+	{
+		width: 295px;
+		float: left;
+		padding: 50px 20px 50px 20px;
+		text-align: left;
+	}
+	
+	.UbcMegaMenuesPOM .UbcPMCallout h2
+	{
+		width: 282px;
+		height: 85px;
+		text-indent: -5000px;
+		background: transparent url(../images/header/placeOfMindCallout.gif) no-repeat;
+	}
+	
+	.UbcMegaMenuesPOM .UbcPMCallout a
+	{
+		display: block;
+		width: 114px;
+		height: 30px;
+		text-indent: -5000px;
+		background: transparent url(../images/header/placeOfMindLearnMoreBtn.gif) no-repeat;
+		margin: 15px 0 0 0;
+	}
+	
+	.UbcMegaMenuesPOM .UbcRSS
+	{
+		width: 635px;
+		float:left;
+	}
+	
+	.UbcMegaMenuesPOM .UbcRSS li.RSS
+	{
+		width: 165px;
+		padding: 20px 20px 20px 10px;
+		border-left: 1px solid #004472;
+		float: left;
+		line-height: 1.5em;
+		list-style-type: none;
+		
+	}
+	
+	.UbcMegaMenuesPOM .UbcRSS li.RSS p.date
+	{
+		font-style: italic;
+	}
+	
+	.UbcMegaMenuesPOM .UbcRSS li.RSS h3 a
+	{
+		text-decoration: none;
+		font-size: 1.18em;
+		color: #E3E3E3;
+	}
+	
+	.UbcMegaMenuesPOM .UbcRSS li.RSS a
+	{
+		font-weight: bold;
+		color: #e3e3e3;
+	}
+	
+	.UbcMegaMenuesPOM .UbcRSS li.RSS a:hover
+	{
+		text-decoration: none;
+	}
