@@ -111,3 +111,51 @@ color: #123B5C;
     letter-spacing: 1px;
     line-height: 20px;
 }
+
+.seminar-event {
+        width: 580px;
+        margin: 0 auto 0 auto;
+        border-width: 5px;
+        border-style: groove;
+        padding: 15px;
+        text-align: center;
+}
+
+.seminar-event h1 {
+        font-size: 1.9em;
+        color: #000;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 0px;
+}
+
+.seminar-event h2 {
+        font-size: 1.6em;
+        color: #000;
+        font-weight: bold;
+        margin-top: 20px;
+}
+
+.seminar-event h3 {
+        font-size: 1.4em;
+        color: #000;
+        font-weight: normal;
+}
+
+.seminar-event h4 {
+        font-size: 1.2em;
+        font-weight: normal;
+        color: #000;
+}
+
+.seminar-event .body {
+
+        border-top: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+        margin: 0 10px;
+        color:#000;
+        font-size: 13px;
+        font-style: italic;
+
+}
+
