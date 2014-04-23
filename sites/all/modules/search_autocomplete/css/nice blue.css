@@ -53,12 +53,11 @@
 	line-height:1.5;
 	zoom:1;
 }
-.ui-menu .ui-menu-item a.ui-state-hover,
-.ui-menu .ui-menu-item a.ui-state-active {
+.ui-menu .ui-menu-item a {
 	font-weight: normal;
 	margin: -1px;
 }
- 
+
  /*!
  * jQuery UI CSS Framework 1.8.22
  *

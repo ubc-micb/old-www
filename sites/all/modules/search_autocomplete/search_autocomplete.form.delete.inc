@@ -68,9 +68,9 @@ function search_autocomplete_form_delete_submit($form, &$form_state) {
             ->condition('parent_fid', $fid)
             ->execute();
   db_query('DELETE FROM {search_autocomplete_forms} WHERE fid = :fid', array(':fid' => $fid));
-  
+
   // Give a return to the user
   drupal_set_message(t("The form has been successfully deleted !"));
-  
+
   $form_state['redirect'] = 'admin/config/search/search_autocomplete';
 }

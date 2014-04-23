@@ -1,14 +1,13 @@
 name = Search Autocomplete
 description = Provides aucompletion for Drupal search forms.
 core = 7.x
-version = 3.0
 package = Search
 files[] = views/plugins/views_plugin_style_autocomplete.inc
 dependencies[] = search
 configure = admin/config/search/search_autocomplete
-; Information added by drupal.org packaging script on 2012-11-04
-version = "7.x-3.0"
+; Information added by drupal.org packaging script on 2013-10-26
+version = "7.x-3.3"
 core = "7.x"
 project = "search_autocomplete"
-datestamp = "1352045235"
+datestamp = "1382791231"
 

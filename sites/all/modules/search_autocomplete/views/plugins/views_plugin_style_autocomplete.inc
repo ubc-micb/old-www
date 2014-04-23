@@ -23,7 +23,7 @@ class views_plugin_style_autocomplete extends views_plugin_style {
   }
 
   /**
-   * Implementation of view_style_plugin::theme_functions(). Returns an array of theme functions to use
+   * Implements view_style_plugin::theme_functions(). Returns an array of theme functions to use
    * for the current style plugin
    * @return array
    */
@@ -34,7 +34,7 @@ class views_plugin_style_autocomplete extends views_plugin_style {
   }
 
   /**
-   * Implementation of views_style_plugin::additional_theme_functions(). Returns empty array.
+   * Implements views_style_plugin::additional_theme_functions(). Returns empty array.
    * @return array
    */
   function additional_theme_functions() {
@@ -42,7 +42,7 @@ class views_plugin_style_autocomplete extends views_plugin_style {
   }
 
   /**
-   * Implementation of view_style_plugin::render()
+   * Implements view_style_plugin::render()
    */
   function render() {
     $view = $this->view;

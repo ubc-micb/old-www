@@ -17,12 +17,10 @@ include_once('search_autocomplete.view_autocomplete.inc');
 
 
 /**
- * HOOK OF INIT:
- * add autocomplete.js on everypage
+ * Implements hook_init().
+ * Add autocomplete.js on everypage.
  */
 function search_autocomplete_init() {
-  global $base_url;
-  global $language;
 
   // checkout if user have authorization to access the autocompleted form
   if (user_access('use Search Autocomplete')) {
@@ -45,27 +43,30 @@ function search_autocomplete_init() {
             $object['label']  = trim(substr($input_data[$i], 0, $cut));
             $object['value']  = trim(substr($input_data[$i], 0, $cut));
             $object['link']   = trim(substr($input_data[$i], $cut+2, strlen($input_data[$i])));
-          } else {
+          } 
+          else {
             $object['label']  = trim($input_data[$i]);
             $object['value']  = trim($input_data[$i]);
           }
           $data_static[] = $object;
         }
         
-        $themeID      = preg_replace("/\\.[^.\\s]{3,4}$/", "", $match->theme);
+        $theme_id      = preg_replace("/\\.[^.\\s]{3,4}$/", "", $match->theme);
         $data_source  = $match->data_callback;
-        if ($match->data_source == 1 && !url_is_external($match->data_callback))
-          $data_source = $base_url . '/' . $match->data_callback;
-        
+        if ($match->data_source == 1 && !url_is_external($match->data_callback)) {
+          $data_source = urldecode(url($match->data_callback, array('absolute' => TRUE)));
+        }
+
         drupal_add_js(array('search_autocomplete' => array(
           $form_id          => array(
             'selector'      => $match->selector,
             'minChars'      => $match->min_char,
             'max_sug'       => $match->max_sug,
+            'no_results'    => $match->no_results,
             'type'          => $match->data_source,
             'datas'         => $match->data_source > 1 ? $data_static : $data_source,
             'fid'           => $match->fid,
-            'theme'         => str_replace(' ', '-', strtolower($themeID)),    // get the css filename with '-' instead of ' ', lower case and no '.css'
+            'theme'         => str_replace(' ', '-', strtolower($theme_id)),    // get the css filename with '-' instead of ' ', lower case and no '.css'
             'auto_submit'   => $match->auto_submit,
             'auto_redirect' => $match->auto_redirect
           )
@@ -102,4 +103,18 @@ function search_autocomplete_replaceArguments(&$input, &$args) {
     $modified = TRUE;
   }
   return $modified;
+}
+
+/**
+ * Helper function: get from database if suggestions should be translited
+ */
+function search_autocomplete_get_translite() {
+// get data in database and fetch it
+  $result = db_select('search_autocomplete_forms', 'f')
+    ->fields('f', array('translite'))
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+
+  return $result;
 }

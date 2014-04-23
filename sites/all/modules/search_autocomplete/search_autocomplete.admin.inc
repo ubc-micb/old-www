@@ -14,7 +14,7 @@
 
 
 /**
- * Implementation of hook_permission().
+ * Implements hook_permission().
  * Valid permissions for this module
  * @return
  *   An array of valid permissions for the autocomplete module
@@ -22,18 +22,18 @@
 function search_autocomplete_permission() {
   return array(
     'administer Search Autocomplete' => array(
-      'title' => t('Administer Search Autocomplete'), 
+      'title' => t('Administer Search Autocomplete'),
       'description' => t('Access administration panel for autocompletion settings.'),
     ),
     'use Search Autocomplete' => array(
-      'title' => t('Use Search Autocomplete'), 
+      'title' => t('Use Search Autocomplete'),
       'description' => t('Allow usage of autocompletion on forms.'),
     ),
   );
 } // function search_autocomplete_permissions()
 
 /**
- * Implementation of hook_theme().
+ * Implements hook_theme().
  * Define the function to render our forms
  */
 function search_autocomplete_theme($existing, $type, $theme, $path) {
@@ -45,7 +45,7 @@ function search_autocomplete_theme($existing, $type, $theme, $path) {
 } // function search_autocomplete_theme($existing, $type, $theme, $path)
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  * Create an administration page to access admin form
  */
 function search_autocomplete_menu() {
@@ -53,11 +53,19 @@ function search_autocomplete_menu() {
   // create the admin setting page: list of forms
   $items['admin/config/search/search_autocomplete'] = array(
     'title'             => 'Search Autocomplete settings',
-    'description'       => 'Choose settings and suggestion items for autocompletion in input forms.',    
+    'description'       => 'Choose settings and suggestion items for autocompletion in input forms.',
     'page callback'     => 'drupal_get_form',
     'page arguments'    => array('search_autocomplete_treelist_form'),
     'access arguments'  => array('administer Search Autocomplete'),
     'file'              => 'search_autocomplete.form.treelist.inc',
+    'type'              => MENU_NORMAL_ITEM,
+    'weight'            => 0
+  );
+  // create a tab for settings
+  $items['admin/config/search/search_autocomplete/settings'] = array(
+    'title'             => 'Search Autocomplete settings',
+    'type'              => MENU_DEFAULT_LOCAL_TASK,
+    'weight'            => 1
   );
   // create an admin setting page: add a new form
   $items['admin/config/search/search_autocomplete/add'] = array(
@@ -67,6 +75,7 @@ function search_autocomplete_menu() {
     'access arguments'  => array('administer Search Autocomplete'),
     'file'              => 'search_autocomplete.form.add.inc',
     'type'              => MENU_LOCAL_TASK,
+    'weight'            => 2
   );
   // create an admin setting page: configure a form
   $items['admin/config/search/search_autocomplete/%/configure'] = array(
@@ -88,7 +97,7 @@ function search_autocomplete_menu() {
 } // function search_autocomplete_menu()
 
 /**
- * Implementation of hook_help().
+ * Implements hook_help().
  */
 function search_autocomplete_help($path, $arg) {
   $help = '';

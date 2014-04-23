@@ -27,6 +27,8 @@ function template_preprocess_views_search_autocomplete_style(&$vars) {
 
   $vars['bitmask'] = NULL;
 
+  $should_translite = search_autocomplete_get_translite();
+
   foreach ($rows as $row) {
 
     $object = array();
@@ -41,7 +43,14 @@ function template_preprocess_views_search_autocomplete_style(&$vars) {
         $link   = $base_root . $matches[2];
         $value  = $matches[3];
 
-        if ($arg == '' || mb_stripos($value, $arg, 0, 'UTF-8')  !== FALSE ) {
+        //hack to romanize accents, this needs module transliteration enabled
+        if (function_exists('transliteration_get') && $should_translite) {
+          $romanised = transliteration_get($value, '?', language_default('language'));
+        }
+        else  $romanised = $value;
+
+        //compare both $value and $romanised
+        if ($arg == '' || mb_stripos($value, $arg, 0, 'UTF-8')  !== FALSE || mb_stripos( $romanised, $arg, 0, 'UTF-8')  !== FALSE ) {
 
           $label = "";
           if ($field->label)
@@ -49,14 +58,13 @@ function template_preprocess_views_search_autocomplete_style(&$vars) {
 
           $object['link']  = $link;
           $object['label'] = $label . $value;
-          $object['value'] = $value;
+          $object['value'] = $romanised;
 
           $objects[] = $object;
-  
+
         }
       }
     }
-    
   }
 
   // check if user wants nested arrays

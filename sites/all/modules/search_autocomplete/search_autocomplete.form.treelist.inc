@@ -19,7 +19,7 @@
  */
 function search_autocomplete_treelist_form($form, &$form_state) {
   $base = "admin/config/search/search_autocomplete";  // base URL for this module configurations
- 
+
   $data = _search_autocomplete_get_items();  // get all forms ordered as a tree;
   $form['my_items'] = array();
   $form['my_items']['#tree'] = TRUE;
@@ -31,6 +31,7 @@ function search_autocomplete_treelist_form($form, &$form_state) {
     $weight     = $values->weight;
     $enabled    = $values->enabled;
     $parent_fid = $values->parent_fid;
+    $translite  = $values->translite;
 
     $form['my_items'][$fid] = array(       // element for this item
       'title' => array(                      // -> human readeable title
@@ -68,6 +69,18 @@ function search_autocomplete_treelist_form($form, &$form_state) {
     );
   }
 
+  // translite option
+  $title = t('Translite special characters.') . ' (' . t('Requires <a href="https://drupal.org/project/transliteration">Transliteration</a> module.') . ' :  ';
+  $title .= module_exists('transliteration') ? '<b>' . t('Installed') . '</b>' : '<b>' . t('Not installed') . '</b>';
+  $title .= ')';
+  $form['translite'] = array(
+    '#type'           => 'checkbox',
+    '#title'          => $title,
+    '#description'    => t('If enabled, the user will be suggested with all special characters suggestions when using standard characters. In other word, when entering "foo", suggestions may contain also "f&oacute;&ocirc;bar", "fo&otilde;bar", ...'),
+    '#disabled'       => module_exists('transliteration') ? FALSE : TRUE,
+    '#default_value'  => $translite
+  );
+
   // submit buton
   $form['submit'] = array(
     '#type' => 'submit',
@@ -78,7 +91,7 @@ function search_autocomplete_treelist_form($form, &$form_state) {
 
 //-------------------------------------------------------------------------------------
 /**
- * Implementation of hook_submit().
+ * Implements hook_submit().
  * Save the changes in the database
  */
 function search_autocomplete_treelist_form_submit($form, &$form_state) {
@@ -89,6 +102,7 @@ function search_autocomplete_treelist_form_submit($form, &$form_state) {
         'weight' => $item['weight'],
         'parent_fid' => $item['parent_fid'],
         'enabled' => $item['enabled'],
+        'translite' => $form_state['values']['translite']
       ))
       ->condition('fid', $item['fid'])
       ->execute();
@@ -105,7 +119,7 @@ function array2str($myarray, &$output = '', $parentkey = "---") {
       $parentkey .= "---";
       array2str($value, $output, $parentkey);
       $parentkey = substr($parentkey, 0, -3);
-    } 
+    }
     else {
       $output .= $parentkey . "[" . $key . "] => " . $value . "<br/>";
     }
@@ -121,12 +135,12 @@ function theme_search_autocomplete_treelist_form($variables) {
   $form = $variables['form'];
 
   drupal_add_tabledrag('my-draggable-table', 'order', 'sibling', 'weight-group');
-  drupal_add_tabledrag('my-draggable-table', 'match', 'parent', 'parent-group', 'parent-group', 'id-group'); 
+  drupal_add_tabledrag('my-draggable-table', 'match', 'parent', 'parent-group', 'parent-group', 'id-group');
 
   $rows = array();
   // for each elements to anchor in the form
   foreach (element_children($form['my_items']) as $key) {
-  
+
     $element                                        = &$form['my_items'][$key];
     $element['weight']['#attributes']['class']      = array('weight-group');
     $element['fid']['#attributes']['class']         = array('id-group');
@@ -141,7 +155,7 @@ function theme_search_autocomplete_treelist_form($variables) {
         drupal_render($element['parent_fid']),
         drupal_render($element['operations']['configure']),
         drupal_render($element['operations']['delete']),
-      ), 
+      ),
       'class' => array('draggable'),
     );
   }
@@ -152,9 +166,9 @@ function theme_search_autocomplete_treelist_form($variables) {
   ));
   // Themize the table and render the form
   $output  = theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => 'my-draggable-table')));
-  $output .= drupal_render($form['submit']);
   $output .= drupal_render_children($form);
-  
+  $output .= drupal_render($form['submit']);
+
   return $output;
 } //function theme_search_autocomplete_treelist_form()
 
@@ -176,7 +190,7 @@ function _search_autocomplete_get_items() {
     ->orderBy('weight')  //ORDER BY created
     ->execute()
     ->fetchAllAssoc('fid');
-    
+
   // order the list
   return _search_autocomplete_get_ordered_list(0, $result);
 } //function _search_autocomplete_get_items()

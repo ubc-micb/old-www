@@ -13,11 +13,11 @@
 
 // -----------------------------------------------------------------------------------------------
 /**
- * Implementation of hook_schema().
+ * Implements hook_schema().
  * Set the schema of database
  * @return the schema for of the table to create
  */
- function search_autocomplete_schema() {
+function search_autocomplete_schema() {
   // schema for search_autocomplete database
   $schema['search_autocomplete_forms'] = array(
     'description' => t('Store the forms to autocomplete using Search Autocomplete.'),
@@ -69,7 +69,14 @@
         'description' => 'Maximum number of suggestions',
         'type'        => 'int',
         'not null'    => TRUE,
-        'default'     => 15,
+        'default'     => 10,
+      ),
+      'no_results'   => array(
+        'description' => 'Maximum number of suggestions',
+        'type'        => 'varchar',
+        'length'      => 50,
+        'not null'    => FALSE,
+        'default'     => '-- no results --',
       ),
       'auto_submit'   => array(
         'description' => 'Define if form should be autosubmitted when suggestion is choosen',
@@ -83,8 +90,14 @@
         'not null'    => TRUE,
         'default'     => 1,
       ),
+      'translite'    => array(
+        'description' => 'Define if suggestion searches should be translited',
+        'type'        => 'int',
+        'not null'    => TRUE,
+        'default'     => 1,
+      ),
       'data_source'  => array(
-        'description' => 'Should data come from callback or from static ressource',
+        'description' => 'Should data come from callback or from static resource',
         'type'        => 'int',
         'not null'    => TRUE,
         'default'     => 1,
@@ -98,6 +111,7 @@
       'data_static'  => array(
         'description' => 'Static text as a data',
         'type'        => 'text',
+        'size'         => 'big',
       ),
       'theme'  => array(
         'description' => 'Theme to use with this form',
@@ -115,19 +129,19 @@
 
 //-----------------------------------------------------------------------------------------------
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function search_autocomplete_install() {
   global $base_url;
   
-  $limit            = variable_get('search_autocomplete_limit', 15);
+  $limit            = variable_get('search_autocomplete_limit', 10);
   $trigger          = variable_get('search_autocomplete_trigger', 3);
   $enabled          = 1;
 
   // ----------------
   // declare insertion statement
   $insert = db_insert('search_autocomplete_forms')
-         ->fields(array('title', 'selector', 'weight', 'enabled', 'min_char', 'max_sug', 'auto_submit', 'auto_redirect', 'data_source', 'data_callback', 'data_static', 'theme'));     
+                ->fields(array('title', 'selector', 'weight', 'enabled', 'min_char', 'max_sug', 'auto_submit', 'auto_redirect', 'data_source', 'data_callback', 'data_static', 'theme'));     
   $insert->values(array(
     'title' => st('Search page - Node Tab') . "  (search/node/%)",
     'selector'      => '#search-form[action="/search/node"] #edit-keys',
@@ -135,10 +149,11 @@ function search_autocomplete_install() {
     'enabled'       => $enabled,
     'min_char'      => $trigger,
     'max_sug'       => $limit,
+    'translite'     => 1,
     'auto_submit'   => 1,
     'auto_redirect' => 1,
     'data_source'   => 1,
-    'data_callback' => 'autocomplete-nodes',
+    'data_callback' => 'autocomplete-nodes?filter=',
     'data_static'   => '',
     'theme'         => 'classic.css'
   ));
@@ -149,10 +164,11 @@ function search_autocomplete_install() {
     'enabled'   => $enabled,
     'min_char'  => $trigger,
     'max_sug'   => $limit,
+    'translite'     => 1,
     'auto_submit'   => 1,
     'auto_redirect' => 1,
     'data_source'   => 1,
-    'data_callback' => 'autocomplete-users',
+    'data_callback' => 'autocomplete-users?filter=',
     'data_static'   => '',
     'theme'         => 'classic.css'
   ));
@@ -163,10 +179,11 @@ function search_autocomplete_install() {
     'enabled'   => $enabled,
     'min_char'  => $trigger,
     'max_sug'   => $limit,
+    'translite'     => 1,
     'auto_submit'   => 1,
     'auto_redirect' => 1,
     'data_source'   => 1,
-    'data_callback' => 'autocomplete-nodes',
+    'data_callback' => 'autocomplete-nodes?filter=',
     'data_static'   => '',
     'theme'         => 'classic.css'
   ));
@@ -255,5 +272,71 @@ function search_autocomplete_update_7302(&$sandbox) {
   cache_clear_all();
   return $ret;
 }
+/**
+  * Get ready for Search Autocomplete 7.x-3.1
+  */
+function search_autocomplete_update_7310(&$sandbox) {
+  $ret = array();
 
+  $translite_field = array(
+    'description' => 'Define if suggestion searches should be translited',
+    'type'        => 'int',
+    'not null'    => TRUE,
+    'default'     => 1,
+  ); 
+  db_add_field( 'search_autocomplete_forms', 'translite', $translite_field);
+  $no_results_field = array(
+    'description' => 'Maximum number of suggestions',
+    'type'        => 'varchar',
+    'length'      => 50,
+    'not null'    => FALSE,
+    'default'     => '-- no results --',
+  ); 
+  db_add_field( 'search_autocomplete_forms', 'no_results', $no_results_field);
+  
+  drupal_clear_js_cache();
+  return t('Update has:<br/>- add a column "translite" in the search autocomplete database.<br/>- add a column "no_results" in the search autocomplete database.<br/> Done with success.');
+
+  // In case of an error, simply throw an exception with an error message.
+  throw new DrupalUpdateException('Something went wrong. Please uninstall and install the module again.');
+  return $ret;
+}
 // -----------------------------------------------------------------------------------------------
+
+/**
+  * Get ready for Search Autocomplete 7.x-3.2
+  */
+function search_autocomplete_update_7320(&$sandbox) {
+  // Create the definition for the field
+  $new_field = array(
+    'description' => 'Static text as a data',
+    'type'        => 'text',
+    'size'        => 'big',
+  );
+  db_change_field('search_autocomplete_forms', 'data_static', 'data_static', $new_field);
+  
+  // Select data_callbacks of 
+  $result = db_select('search_autocomplete_forms', 'f')
+    ->fields('f', array('fid', 'data_callback'))
+    ->execute()
+    ->fetchAll();
+  foreach ($result as $item) {
+    db_update('search_autocomplete_forms')
+      ->fields(array(
+        'data_callback'   => $item->data_callback . '?filter=')
+      )
+      ->condition('data_callback', array('autocomplete-nodes', 'autocomplete-users'), 'IN')
+      ->execute();
+  }
+
+  return (t('Update has:') . '<br/>' . t('- changed column type "data_static" from TEXT to LONGTEXT.')
+                           . '<br/>' . t('- Add filter to VIEWS callback for performance improvement.'));
+}
+
+/**
+  * Get ready for Search Autocomplete 7.x-3.3
+  */
+function search_autocomplete_update_7330(&$sandbox) {
+  views_invalidate_cache();
+  return t("Cleared views cache");
+}
