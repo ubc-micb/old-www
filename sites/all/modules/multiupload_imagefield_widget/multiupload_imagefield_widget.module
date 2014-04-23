@@ -18,6 +18,7 @@ function multiupload_imagefield_widget_field_widget_info() {
       ),
       'settings' => array(
         'progress_indicator' => 'throbber',
+        'preview_image_style' => 'thumbnail',
       ),
     ),
   );
@@ -67,8 +68,7 @@ function multiupload_imagefield_widget_field_widget_form(&$form, &$form_state, $
  * Implements hook_field_widget_settings_form().
  */
 function multiupload_imagefield_widget_field_widget_settings_form($field, $instance) {
-  $widget = $instance['widget'];
-  $settings = $widget['settings'];
+  $settings = $instance['widget']['settings'];
 
   // Use the mfw file widget settings form.
   $form = multiupload_filefield_widget_field_widget_settings_form($field, $instance);
@@ -93,4 +93,34 @@ function multiupload_imagefield_widget_field_widget_settings_form($field, $insta
  */
 function multiupload_imagefield_widget_field_widget_process($element, &$form_state, &$form) {
   return image_field_widget_process($element, $form_state, $form);
+}
+
+/**
+ * Implements hook_insert_widgets() for compatibility with insert.module.
+ */
+function multiupload_imagefield_widget_insert_widgets() {
+  $items['image_miw'] = array(
+    'element_type' => 'mfw_managed_file',
+    'wrapper' => '.image-widget',
+    'fields' => array(
+      'alt' => 'input[name$="[alt]"], textarea[name$="[alt]"]',
+      'title' => 'input[name$="[title]"], textarea[name$="[title]"]',
+      'description' => 'input[name$="[description]"], textarea[name$="[description]"]',
+    ),
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_insert_styles() for compatibility with insert.module.
+ */
+function multiupload_imagefield_widget_insert_styles() {
+  return image_insert_styles();
+}
+
+/**
+ * Implementation of hook_insert_content() for compatibility with insert.module.
+ */
+function multiupload_imagefield_widget_insert_content($item, $style, $widget) {
+  return image_insert_content($item, $style, $widget);
 }

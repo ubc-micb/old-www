@@ -46,21 +46,22 @@ Drupal.mfw = Drupal.mfw || {
     // Add client side validation for the input[type=file].
     var extensionPattern = event.data.extensions.replace(/,\s*/g, '|');
     if (extensionPattern.length > 1 && this.value.length > 0) {
-      // Instead of the original 'ig' ending we have just 'i' otherwise test()  
+      // Instead of the original 'ig' ending we have just 'i' otherwise test()
       // evaluates to 'false' after the second call.
       var acceptableMatch = new RegExp('\\.(' + extensionPattern + ')$', 'i');
-      var i = 0;
-      for (i = 0; i < this.files.length; i++) {
-        var fileName = this.files[i].name;
-        var match = acceptableMatch.test(fileName);
-        if (!match) {
-          var error = Drupal.t("The selected file %filename cannot be uploaded. Only files with the following extensions are allowed: %extensions.", {
-            '%filename': fileName,
-            '%extensions': extensionPattern.replace(/\|/g, ', ')
-          } );
-          $(this).parents('div.form-managed-file').prepend('<div class="messages error file-upload-js-error">' + error + '</div>');
-          this.value = '';
-          return false;
+      if (typeof(this.files) == 'object') {
+        for (i = 0; i < this.files.length; i++) {
+          var fileName = this.files[i].name;
+          var match = acceptableMatch.test(fileName);
+          if (!match) {
+            var error = Drupal.t("The selected file %filename cannot be uploaded. Only files with the following extensions are allowed: %extensions.", {
+              '%filename': fileName,
+              '%extensions': extensionPattern.replace(/\|/g, ', ')
+            });
+            $(this).parents('div.form-managed-file').prepend('<div class="messages error file-upload-js-error">' + error + '</div>');
+            this.value = '';
+            return false;
+          }
         }
       }
     }

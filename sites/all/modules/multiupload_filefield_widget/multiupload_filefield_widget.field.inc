@@ -178,13 +178,12 @@ function mfw_field_widget_process_multiple($element, &$form_state, $form) {
   $upload_name = implode('_', $element['#parents']) . '_' . $element['#file_upload_delta'];
   if (isset($_FILES['files']['name']) && array_key_exists($upload_name, $_FILES['files']['name'])) {
     $count = count($_FILES['files']['name'][$upload_name]);
-    //Supposing #file_upload_delta is always the last delta this will work
+    // Supposing #file_upload_delta is always the last delta this will work
     for ($i = 1; $i < $count; $i++) {
       $element[] = $element[$element['#file_upload_delta']];
     }
   }
-
-  $element_children = element_children($element, TRUE);
+  $element_children = element_children($element);
   $count = count($element_children);
 
   foreach ($element_children as $delta => $key) {
@@ -228,4 +227,3 @@ function mfw_field_widget_process_multiple($element, &$form_state, $form) {
 function multiupload_filefield_widget_field_widget_submit($form, &$form_state) {
   return file_field_widget_submit($form, $form_state);
 }
-
