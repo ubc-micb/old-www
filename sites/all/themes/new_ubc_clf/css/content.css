@@ -110,7 +110,6 @@ ul.menu {
 ul.menu li {
 	margin: 0;
 	list-style: none;
-	padding: inherit;
 }
 
 .menu-block-wrapper .menu a {
