@@ -1,4 +1,3 @@
-# UBC Microbiology and Immunology Website
-http://www.microbiology.ubc.ca
+# UBC Microbiology and Immunology Development Website
 
-The UBC Microbiology and Immunology (MICB) website is based on Drupal 7.  This is not the entire site but only the modules and themes that have been added to a stock Drupal 7 installation.
+The UBC MCBI development website is based on Drupal 7.  This is not the entire site but only the modules and themes that have been added to a stock Drupal 7 installation.
